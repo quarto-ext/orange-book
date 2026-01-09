@@ -7,6 +7,7 @@ contributes:
     typst:
       template-partials:
         - numbering.typ
+        - page.typ
         - typst-show.typ
       filters:
         - path: orange-book.lua
