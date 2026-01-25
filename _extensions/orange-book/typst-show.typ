@@ -1,4 +1,4 @@
-#import "@local/orange-book:0.7.0": book, part, chapter, appendices
+#import "@local/orange-book:0.7.1": book, part, chapter, appendices
 
 #show: book.with(
 $if(title)$

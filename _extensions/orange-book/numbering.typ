@@ -1,29 +1,29 @@
 // Chapter-based numbering for books with appendix support
-#let quarto-equation-numbering = it => {
+#let equation-numbering = it => {
   let pattern = if state("appendix-state", none).get() != none { "(A.1)" } else { "(1.1)" }
   numbering(pattern, counter(heading).get().first(), it)
 }
-#let quarto-callout-numbering = it => {
+#let callout-numbering = it => {
   let pattern = if state("appendix-state", none).get() != none { "A.1" } else { "1.1" }
   numbering(pattern, counter(heading).get().first(), it)
 }
-#let quarto-subfloat-numbering(n-super, subfloat-idx) = {
+#let subfloat-numbering(n-super, subfloat-idx) = {
   let chapter = counter(heading).get().first()
   let pattern = if state("appendix-state", none).get() != none { "A.1a" } else { "1.1a" }
   numbering(pattern, chapter, n-super, subfloat-idx)
 }
 // Theorem configuration for theorion
 // Chapter-based numbering (H1 = chapters)
-#let quarto-theorem-inherited-levels = 1
+#let theorem-inherited-levels = 1
 
 // Appendix-aware theorem numbering
-#let quarto-theorem-numbering(loc) = {
+#let theorem-numbering(loc) = {
   if state("appendix-state", none).at(loc) != none { "A.1" } else { "1.1" }
 }
 
 // Theorem render function
 // Note: brand-color is not available at this point in template processing
-#let quarto-theorem-render(prefix: none, title: "", full-title: auto, body) = {
+#let theorem-render(prefix: none, title: "", full-title: auto, body) = {
   block(
     width: 100%,
     inset: (left: 1em),
