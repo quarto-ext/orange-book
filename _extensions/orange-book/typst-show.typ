@@ -33,6 +33,31 @@ $endif$
 )
 
 $if(margin-geometry)$
+
+// Override heading styling on verso (even) pages only.
+// Orange-book uses place(dx: -width - gap) for heading numbers, which works on recto
+// pages but on verso pages the offset goes into the outer margin (where marginalia lives).
+#show heading: it => {
+  if it.level == 1 { it } else {
+    context {
+      let is-recto = calc.odd(here().page())
+      if is-recto { it } else {
+        // Verso page: use inline numbering instead of placed offset
+        let size = if it.level == 2 { 1.5em } else if it.level == 3 { 1.1em } else { 1em }
+        let color = if it.level < 4 { brand-color.at("primary", default: blue) } else { black }
+        let space = if it.level == 2 { 1em } else if it.level == 3 { 0.9em } else { 0.7em }
+
+        set text(size: size)
+        let num = if it.numbering != none {
+          text(fill: color)[#counter(heading).display(it.numbering)]
+        }
+        block(num + [ ] + it.body)
+        v(space, weak: true)
+      }
+    }
+  }
+}
+
 // Configure marginalia page geometry for book context
 // Geometry computed by Quarto's meta.lua filter (typstGeometryFromPaperWidth)
 // IMPORTANT: This must come AFTER book.with() to override the book format's margin settings
