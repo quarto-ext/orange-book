@@ -31,3 +31,28 @@ $if(lot)$
   list-of-table-title: "$if(crossref.lot-title)$$crossref.lot-title$$else$$crossref-lot-title$$endif$",
 $endif$
 )
+
+$if(margin-geometry)$
+// Configure marginalia page geometry for book context
+// Geometry computed by Quarto's meta.lua filter (typstGeometryFromPaperWidth)
+// IMPORTANT: This must come AFTER book.with() to override the book format's margin settings
+#import "@preview/marginalia:0.3.1" as marginalia
+
+#show: marginalia.setup.with(
+  inner: (
+    far: $margin-geometry.inner.far$,
+    width: $margin-geometry.inner.width$,
+    sep: $margin-geometry.inner.separation$,
+  ),
+  outer: (
+    far: $margin-geometry.outer.far$,
+    width: $margin-geometry.outer.width$,
+    sep: $margin-geometry.outer.separation$,
+  ),
+  top: $if(margin.top)$$margin.top$$else$1.25in$endif$,
+  bottom: $if(margin.bottom)$$margin.bottom$$else$1.25in$endif$,
+  // CRITICAL: Enable book mode for recto/verso awareness
+  book: true,
+  clearance: $margin-geometry.clearance$,
+)
+$endif$
