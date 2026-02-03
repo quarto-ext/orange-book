@@ -1,4 +1,4 @@
-#import "../lib.typ": *
+#import "@preview/orange-book:0.7.1": book, part, chapter, my-bibliography, appendices, make-index, index, theorem, definition, notation,remark,corollary,proposition,example,exercise, problem, vocabulary, scr, update-heading-image
 
 //#set text(font: "Linux Libertine")
 //#set text(font: "TeX Gyre Pagella")
@@ -21,7 +21,6 @@
   supplement-chapter: "Chapter",
   supplement-part: "Part",
   part-style: 0,
-  heading-style: 0,
   copyright: [
     Copyright © 2023 Flavio Barisi
 
