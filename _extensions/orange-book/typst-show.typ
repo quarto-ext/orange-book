@@ -16,6 +16,15 @@ $endif$
 $if(lang)$
   lang: "$lang$",
 $endif$
+$if(papersize)$
+  paper-size: "$papersize$",
+$endif$
+$if(paper-width)$
+  width: $paper-width$,
+$endif$
+$if(paper-height)$
+  height: $paper-height$,
+$endif$
   main-color: brand-color.at("primary", default: blue),
   logo: {
     let logo-info = brand-logo.at("medium", default: none)
