@@ -17,6 +17,15 @@ $if(lang)$
   lang: "$lang$",
 $endif$
   main-color: brand-color.at("primary", default: blue),
+$if(cover.background)$
+  cover-background: brand-color.at("$cover.background$"),
+$endif$
+$if(cover.image)$
+  cover: image("$cover.image$"$if(cover.alt)$, alt: "$cover.alt$"$endif$),
+$endif$
+$if(cover.copyright)$
+  copyright: [$cover.copyright$],
+$endif$
   logo: {
     let logo-info = brand-logo.at("medium", default: none)
     if logo-info != none { image(logo-info.path, alt: logo-info.at("alt", default: none)) }

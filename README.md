@@ -23,6 +23,30 @@ project:
 format: orange-book-typst
 ```
 
+## Cover
+
+The cover of the book takes its main colour from `color.primary` and its logo from `logo.medium` of the brand file.
+You can also set three options of the orange-book package with a `cover` map:
+
+```yaml
+format:
+  orange-book-typst:
+    cover:
+      background: secondary
+      image: cover.png
+      alt: A description of the image.
+      copyright: Copyright 2026 Jane Smith.
+```
+
+- `background` is the name of a colour of the brand file, and it fills the title box.
+  A hex value does not work, because Pandoc escapes the `#`.
+- `image` is the path of an image that fills the cover page.
+- `alt` is the alternative text of the image.
+  With `pdf-standard: ua-1`, an image without `alt` stops the build.
+- `copyright` is the text that the package prints at the bottom of the page after the cover.
+
+All four keys are optional.
+
 ## Features
 
 - Transforms book parts into `#part[...]` calls for proper orange-book formatting
