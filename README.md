@@ -39,6 +39,7 @@ format:
 ```
 
 - `background` is the name of a colour of the brand file, and it fills the title box.
+  The name `none` removes the fill.
   A hex value does not work, because Pandoc escapes the `#`.
 - `image` is the path of an image that fills the cover page.
 - `alt` is the alternative text of the image.
